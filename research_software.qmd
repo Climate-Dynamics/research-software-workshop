@@ -1,0 +1,257 @@
+---
+title: "Workshop: Developing Research Software"
+author: "Sebastian G. Mutz"
+format:
+  revealjs:
+    theme: [default, theme/custom_dark.scss]
+    width: 1600 #1920
+    height: 900 #1080
+    logo: img/logo.png
+    footer: "CC-BY, Sebastian G. Mutz"
+    slide-number: true
+---
+
+
+
+## Disclaimer
+
+- Will only *raise awareness* of some key practices; tutorials are outside scope.
+- Developer teams for large codebases (e.g., [ICON](https://www.icon-model.org/)) have more to consider.
+- For brevity, only few examples of tools and services are shown.
+
+---
+
+
+
+## Goals for today
+
+::: incremental
+1. Help you increase research software *sustainability* and *impact* by adopting good development practices.
+
+2. *Signpost* useful tools and services.
+
+3. *Demonstrate* some aspects of it with an example.
+:::
+
+---
+
+
+
+## The state of research software
+
+::: incremental
+- Often *closed* source, *no licence, documentation, distribution mechanism*, etc.
+- Software often developed and used for single project, then *abandoned*.
+- Grant schemes just to address these issues (e.g., by the Software Sustainability Institute)
+:::
+
+---
+
+
+
+## Software literacy among researchers
+
+::: {.columns}
+::: {.column width="45%"}
+> "I need [insert random software package, specific IDE, expensive licence, etc.] to create good software."
+
+*[Many students and ECRs]*
+:::
+
+::: {.column width="55%"}
+
+Good software ...
+
+::: incremental
+- addresses real need.
+- is well designed, tested, and documented.
+- is maintainable/ sustainable.
+- has mechanisms for the above.
+:::
+
+:::
+:::
+
+---
+
+
+
+## Software literacy among researchers
+
+::: {.columns}
+::: {.column width="50%"}
+> "If your LLM gets code from open GitHub repositories, there are no concerns. They are public, so you're allowed to do anything."
+
+*[Convener in computational EGU session]*
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+---
+
+
+
+## Software literacy among researchers
+
+::: {.columns}
+::: {.column width="50%"}
+> "If your LLM gets code from open GitHub repositories, there are no concerns. They are public, so you're allowed to do anything."
+
+*[Convener in computational EGU session]*
+:::
+
+::: {.column width="50%"}
+![Licence breakdown on GitHub. Quote true for CC0. *[Balter, 2021]* ](img/gh_licenses.jpg){fig-align="left" width=100%}
+:::
+:::
+
+---
+
+
+
+## Software literacy among researchers
+
+::: {.columns}
+::: {.column width="25%"}
+> "Open-source software (OSS) is a second-class budget copy of proprietary equivalents."
+
+*[Colleagues at GES]*
+:::
+
+
+::: {.column width="65%"}
+
+::: incremental
+- OSS is backbone of global digital infrastructure and leads innovation; others usually follow/take from it (e.g., MacOS).
+
+- Some facts and figures *[Hoffman et al., 2024]*:
+  - OSS included in *96% of all codebases*.
+  - OSS has economic value of *8.8T USD*.
+  - Without OSS, *3.5x more* would have to be spent on development.
+:::
+
+:::
+:::
+
+---
+
+
+
+## Environment management
+
+::: {.columns}
+::: {.column width="40%"}
+
+![](img/conda.png){fig-align="left" width=25%}
+
+`conda`
+
+- open-source and mature
+- installs pre-compiled binaries
+- lots of libraries available through *conda-forge*
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](img/spack.png){fig-align="left" width=25%}
+
+`spack`
+
+- open-source and mature
+- compiles on your computer
+- can build, install, and manage *multiple versions* of libraries without breaking other installations
+- more flexible, finer control (popular for development for HPC)
+
+:::
+:::
+
+---
+
+
+
+## Welcoming the community
+
+First questions people may ask when showing genuine interest in using and co-developing your library:
+
+> Does it have a guide for contributors?
+
+> Does it have proper tests and documentation?
+
+---
+
+
+
+## Git – it's not black magic
+
+- `git add [file or directory]` adds new or changed content to index
+
+- `git commit -m "description of changes"` records changes to the code repository with a message
+
+- `git push` updates your remote repository (e.g., on GitHub or Codeberg)
+
+- `git pull` fetches update from remote repository
+
+---
+
+
+
+## Git GUI Clients
+
+![*SourceGit* – and open-source *git* GUI client.](img/SourceGit.png){fig-align="left" width=50%}
+
+---
+
+
+
+## Hosting your code repository
+
+::: {.columns}
+::: {.column width="40%"}
+
+![](img/github.png){fig-align="left" width=25%}
+
+`GitHub`
+
+- very widely used platform
+- lots of templates, but also gets bloated
+- bought by MS, so MS services are pushed and MS will use your data and code
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](img/codeberg.png){fig-align="left" width=25%}
+
+`Codeberg`
+
+- non-profit and community-driven
+- specialising in open-source services
+- GDPR compliant and hosted in EU
+
+:::
+:::
+
+---
+
+
+
+## Getting acknowledgement for your work
+
+- Journal of Open-Source Software (JOSS)
+- Geoscientific Model Development
+
+
+
+---
+
+## References
+
+- Balter, Ben (2015; updated 2021) "Open source license usage on GitHub.com", GitHub Blog. [Link](https://github.blog/open-source/open-source-license-usage-on-github-com/)
+- Hoffmann, Manuel, Frank Nagle, and Yanuo Zhou (2024) "The Value of Open Source Software." Harvard Business School Working Paper, No. 24-038.
+

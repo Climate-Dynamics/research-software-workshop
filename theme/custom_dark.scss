@@ -1,0 +1,92 @@
+/*-- scss:defaults --*/
+
+// Grey background
+$body-bg: #2f3437;
+$body-color: #ecf0f1;
+
+// Blue accent
+$presentation-heading-color: #4aa3df;
+$link-color: #8cd1ff;
+
+// Secondary text
+$text-secondary: #f0eeb1;
+
+// Muted text
+$text-muted: #a9b2ba;
+
+// Code
+$code-color: #ecf0f1;
+$code-block-bg: #25292c;
+
+/*-- scss:rules --*/
+
+// Headings
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: $presentation-heading-color;
+  font-weight: 600;
+}
+
+// Lists
+.reveal ul,
+.reveal ol {
+  color: $body-color;
+}
+
+.reveal ul li::marker,
+.reveal ol li::marker {
+  color: $text-muted;
+}
+
+// Links
+.reveal a {
+  color: $link-color;
+}
+
+// Blockquotes
+.reveal .slide blockquote {
+  border-left: 3px solid $text-secondary;
+  padding-left: 0.75em;
+  color: $text-muted;
+}
+
+// Tables
+.reveal table th {
+  color: $presentation-heading-color;
+}
+
+.reveal table td,
+.reveal table th {
+  border-color: #50575c;
+}
+
+// Code
+.reveal pre code {
+  background: $code-block-bg;
+  border-radius: 6px;
+}
+
+/* Inline code */
+.reveal p code,
+.reveal li code,
+.reveal td code {
+  background-color: $code-block-bg;
+  color: $text-secondary;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+// Strong emphasis (bold)
+.reveal strong {
+  color: #ffffff;
+}
+
+// Italics
+.reveal em {
+  color: $text-secondary;
+  font-style: italic;
+}
