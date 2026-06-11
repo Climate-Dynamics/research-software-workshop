@@ -141,7 +141,8 @@ Sebastian G. Mutz
 <section id="disclaimer" class="slide level2">
 <h2>Disclaimer</h2>
 <ul>
-<li>Will only <em>raise awareness</em> of some key practices; tutorials are outside scope.</li>
+<li>I will assume some basic experience with coding.</li>
+<li>The aim is to only <em>raise awareness</em> of some key practices; tutorials are outside scope.</li>
 <li>Developer teams for large codebases (e.g., <a href="https://www.icon-model.org/">ICON</a>) have more to consider.</li>
 <li>For brevity, only few examples of tools and services are shown.</li>
 </ul>
@@ -216,7 +217,7 @@ Sebastian G. Mutz
 <blockquote>
 <p>“Open-source software (OSS) is a second-class budget copy of proprietary equivalents.”</p>
 </blockquote>
-<p><em>[Colleagues at GES]</em></p>
+<p><em>[Many colleagues; paraphrased]</em></p>
 </div><div class="column" style="width:65%;">
 <ul>
 <li class="fragment"><p>OSS is backbone of global digital infrastructure and leads innovation; others usually follow/take from it (e.g., MacOS).</p></li>
@@ -297,7 +298,7 @@ Sebastian G. Mutz
 <ul>
 <li>very widely used platform</li>
 <li>lots of templates, but also gets bloated</li>
-<li>bought by MS, so MS services are pushed and MS will use your data and code</li>
+<li>bought by MS, so MS services are pushed and MS will use your data/code (just-telling-it-how-it-is™)</li>
 </ul>
 </div><div class="column" style="width:10%;">
 
@@ -313,6 +314,47 @@ Sebastian G. Mutz
 <li>specialising in open-source services</li>
 <li>GDPR compliant and hosted in EU</li>
 </ul>
+</div></div>
+</section>
+<section id="language-servers-helping-you-code" class="slide level2">
+<h2>Language Servers: helping you code</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><em>Language Servers</em> are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.</p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fortls.png" style="width:100.0%"></p>
+<figcaption>Fortran Language Server <em>fortls</em> (<a href="https://fortls.fortran-lang.org/index.html">link</a>) displaying project-specific kind definitions and list of module procedures in the <a href="https://kate-editor.org">kate</a> editor.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="linters-keeping-your-code-clean" class="slide level2">
+<h2>Linters: keeping your code clean</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><em>Linters</em> are static code analysis tools that enforce style and formatting conventions, and flag “suspicious” parts of your code.</li>
+<li><em>Examples:</em>
+<ul>
+<li>Fortran: <a href="fortitude.readthedocs.io">Fortitude</a></li>
+<li>R: <a href="https://lintr.r-lib.org/">lintr</a></li>
+<li>C/C++: <a href="https://cpp-linter.github.io/">cpp-linter</a></li>
+<li>Python: <a href="https://docs.astral.sh/ruff/">Ruff</a></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/ioccc_winner_2025_jhshrvdp.png" style="width:100.0%"></p>
+<figcaption>One of the 2025 winners of International Obfuscated C Code Contest (<a href="https://github.com/ioccc-src/winner/blob/master/2025/jhshrvdp/prog.c">link</a>). Linters help you prevent writing code this this (unless you really want to).</figcaption>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="getting-acknowledgement-for-your-work" class="slide level2">

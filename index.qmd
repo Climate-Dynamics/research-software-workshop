@@ -15,7 +15,8 @@ format:
 
 ## Disclaimer
 
-- Will only *raise awareness* of some key practices; tutorials are outside scope.
+- I will assume some basic experience with coding.
+- The aim is to only *raise awareness* of some key practices; tutorials are outside scope.
 - Developer teams for large codebases (e.g., [ICON](https://www.icon-model.org/)) have more to consider.
 - For brevity, only few examples of tools and services are shown.
 
@@ -117,7 +118,7 @@ Good software ...
 ::: {.column width="25%"}
 > "Open-source software (OSS) is a second-class budget copy of proprietary equivalents."
 
-*[Colleagues at GES]*
+*[Many colleagues; paraphrased]*
 :::
 
 
@@ -218,7 +219,7 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 - very widely used platform
 - lots of templates, but also gets bloated
-- bought by MS, so MS services are pushed and MS will use your data and code
+- bought by MS, so MS services are pushed and MS will use your data/code (just-telling-it-how-it-is™)
 
 :::
 
@@ -233,6 +234,55 @@ First questions people may ask when showing genuine interest in using and co-dev
 - non-profit and community-driven
 - specialising in open-source services
 - GDPR compliant and hosted in EU
+
+:::
+:::
+
+---
+
+
+
+## Language Servers: helping you code
+
+::: {.columns}
+::: {.column width="30%"}
+
+*Language Servers* are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+
+![Fortran Language Server *fortls* ([link](https://fortls.fortran-lang.org/index.html)) displaying project-specific kind definitions and list of module procedures in the [kate](https://kate-editor.org) editor.](img/fortls.png){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
+## Linters: keeping your code clean
+
+::: {.columns}
+::: {.column width="40%"}
+
+- *Linters* are static code analysis tools that enforce style and formatting conventions, and flag "suspicious" parts of your code.
+- *Examples:*
+  - Fortran: [Fortitude](fortitude.readthedocs.io)
+  - R: [lintr](https://lintr.r-lib.org/)
+  - C/C++: [cpp-linter](https://cpp-linter.github.io/)
+  - Python: [Ruff](https://docs.astral.sh/ruff/)
+
+:::
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+
+![One of the 2025 winners of International Obfuscated C Code Contest ([link](https://github.com/ioccc-src/winner/blob/master/2025/jhshrvdp/prog.c)). Linters help you prevent writing code this this (unless you really want to).](img/ioccc_winner_2025_jhshrvdp.png){fig-align="left" width=100%}
 
 :::
 :::
