@@ -9,7 +9,33 @@ format:
     logo: img/logo.png
     footer: "CC-BY, Sebastian G. Mutz"
     slide-number: true
+    mermaid:
+      theme: dark
+
 ---
+
+
+
+
+## <span style="color:#a165a1"> Roadmap </span>
+
+
+```{mermaid}
+flowchart LR
+  A(Goals and Intro) --> B(Introduction to Tools)
+  B --> C(Good Practices)
+  C --> D(Example Development)
+  D --> E(Distribution and Impact)
+  style A fill:#612561
+```
+
+::: incremental
+- Who and what is this (not) for?
+- A note on software literacy among researchers.
+:::
+
+---
+
 
 
 
@@ -17,10 +43,11 @@ format:
 
 - I will assume some basic experience with coding.
 - The aim is to only *raise awareness* of some key practices; tutorials are outside scope.
-- Developer teams for large codebases (e.g., [ICON](https://www.icon-model.org/)) have more to consider.
+- Developer teams for large codebases (e.g., [ICON](https://www.icon-model.org/)) have more to consider than what is presented here.
 - For brevity, only few examples of tools and services are shown.
 
 ---
+
 
 
 
@@ -29,10 +56,11 @@ format:
 ::: incremental
 1. Help you increase research software *sustainability* and *impact* by adopting good development practices.
 
-2. *Signpost* useful tools and services.
+2. *Signpost* useful tools and services beyond IDEs and debuggers. (You can't look for/into something if you're unaware of its existence.)
 
 3. *Demonstrate* some aspects of it with an example.
 :::
+
 
 ---
 
@@ -64,16 +92,35 @@ format:
 Good software ...
 
 ::: incremental
-- addresses real need.
-- is well designed, tested, and documented.
-- is maintainable/ sustainable.
-- has mechanisms for the above.
+1. addresses real (research) need.
+2. is well designed, tested, and reliable.
+3. is well documented and maintainable.
+4. is developed with/for the community/users (adheres to standards, clean API)
+5. has mechanisms for the above.
+6. ... is open.
 :::
 
 :::
 :::
+
+
+<!--- speaker notes below -->
+
+::: {.notes}
+
+2. Has test suite.
+3. Auto-generated API documentation with additional "user guide" (use doc tools)
+4. Examples:
+- no vendor specific compiler extensions
+- API consistent and semantically meaningful
+- use community standards for style (enforce with linter)
+5. Doc tools (ford, sphinx), linter for style, contributor guide, mechanisms for feedback.
+
+:::
+
 
 ---
+
 
 
 
@@ -90,7 +137,17 @@ Good software ...
 :::
 :::
 
+<!--- speaker notes below -->
+
+::: {.notes}
+
+Many researchers are afraid of developing openly. One reason is low (OSS/software) literacy. Let's dispel some myths.
+
+:::
+
+
 ---
+
 
 
 
@@ -105,6 +162,8 @@ Good software ...
 
 ::: {.column width="50%"}
 ![Licence breakdown on GitHub. Quote true for CC0. *[Balter, 2021]* ](img/gh_licenses.jpg){fig-align="left" width=100%}
+
+Researcher understand plagiarism and intellectual property for research (articles), but often fail to acknowledge this for software.
 :::
 :::
 
@@ -140,53 +199,40 @@ Good software ...
 
 
 
-## Environment management
 
-::: {.columns}
-::: {.column width="40%"}
+## <span style="color:#a165a1"> Roadmap </span>
 
-![](img/conda.png){fig-align="left" width=25%}
+```{mermaid}
+flowchart LR
+  A(Goals and Intro) --> B(Introduction to Tools)
+  B --> C(Good Practices)
+  C --> D(Example Development)
+  D --> E(Distribution and Impact)
+  style A fill:#616161
+  style B fill:#612561
+```
 
-`conda`
+Good practice supported by common tools:
 
-- open-source and mature
-- installs pre-compiled binaries
-- lots of libraries available through *conda-forge*
-:::
-
-::: {.column width="10%"}
-:::
-
-::: {.column width="40%"}
-![](img/spack.png){fig-align="left" width=25%}
-
-`spack`
-
-- open-source and mature
-- compiles on your computer
-- can build, install, and manage *multiple versions* of libraries without breaking other installations
-- more flexible, finer control (popular for development for HPC)
-
-:::
+::: incremental
+- Git, code hosting
+- Managing environments
+- Language servers
+- Linters
+- Documentation tools
+- Distribution and automatic deployment
 :::
 
 ---
 
-
-
-## Welcoming the community
-
-First questions people may ask when showing genuine interest in using and co-developing your library:
-
-> Does it have a guide for contributors?
-
-> Does it have proper tests and documentation?
-
----
 
 
 
 ## Git – it's not black magic
+
+`git` is a *distributed version control* system; an automated way to organise and track different versions of a software, where the complete codebase mirrored on the developer's computers.
+
+Basic use examples:
 
 - `git add [file or directory]` adds new or changed content to index
 
@@ -242,12 +288,49 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 
 
+
+## Environment management
+
+::: {.columns}
+::: {.column width="40%"}
+
+![](img/conda.png){fig-align="left" width=25%}
+
+`conda`
+
+- open-source and mature
+- installs pre-compiled binaries
+- lots of libraries available through *conda-forge*
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="40%"}
+![](img/spack.png){fig-align="left" width=25%}
+
+`spack`
+
+- open-source and mature
+- compiles on your computer
+- can build, install, and manage *multiple versions* of libraries without breaking other installations
+- more flexible, finer control (popular for development for HPC)
+
+:::
+:::
+
+---
+
+
+
+
 ## Language Servers: helping you code
 
 ::: {.columns}
 ::: {.column width="30%"}
 
-*Language Servers* are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.
+- *Language Servers* are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.
+- Decoupled from IDE code; can use language servers for various languages in same IDE.
 
 :::
 ::: {.column width="5%"}
@@ -255,12 +338,13 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 ::: {.column width="65%"}
 
-![Fortran Language Server *fortls* ([link](https://fortls.fortran-lang.org/index.html)) displaying project-specific kind definitions and list of module procedures in the [kate](https://kate-editor.org) editor.](img/fortls.png){fig-align="left" width=100%}
+![Among many helpful things, the Fortran Language Server *fortls* ([link](https://fortls.fortran-lang.org/index.html)) displays project-specific kind definitions and lists of module procedures. In this case, it is used in the [kate](https://kate-editor.org) editor.](img/fortls.png){fig-align="left" width=100%}
 
 :::
 :::
 
 ---
+
 
 
 
@@ -291,6 +375,151 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 
 
+
+## Automatic Documentation
+
+::: {.columns}
+::: {.column width="50%"}
+
+`FORD`
+
+![[FORD](https://forddocs.readthedocs.io) (Fortran Documenter) is another tool for automated documentation for `Fortran`.](img/ford.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="50%"}
+
+
+:::
+:::
+
+---
+
+
+
+
+## Automatic Documentation
+
+::: {.columns}
+::: {.column width="50%"}
+
+`FORD`
+
+![[FORD](https://forddocs.readthedocs.io) (Fortran Documenter) is another tool for automated documentation for `Fortran`.](img/ford.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="50%"}
+
+`Sphinx`
+
+![[Sphinx](https://www.sphinx-doc.org/en/master/) is a popular documentation tool. It is versatile and can be used for many languages.](img/sphinx.png){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
+
+## Distribution
+
+Making it easy for others to use your software ...
+
+- *Rust*: Cargo
+- *Fortran*: FPM (Fortran Package Manager)
+- *R*: CRAN (Comprehensive R Archive Network)
+- *Python*: pip/PyPI (Python Package Index)
+
+---
+
+
+
+
+## Automated deployment
+
+::: {.columns}
+::: {.column width="40%"}
+
+- Using tools that will *automatically release code changes* (going from development environment right to end users).
+- *Example*: This presentation takes advantage of *GitHub pages*; when the repository for this presentation is updated, the changes to this web presentation are automatically released.
+
+:::
+
+::: {.column width="60%"}
+
+![Pushed changes of the rendered site are automatically delpoyed.](img/ghpages.png){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
+
+## Automated deployment
+
+*Let's try ...*
+
+---
+
+
+
+## <span style="color:#a165a1"> Roadmap </span>
+
+```{mermaid}
+flowchart LR
+  A(Goals and Intro) --> B(Introduction to Tools)
+  B --> C(Good Practices)
+  C --> D(Example Development)
+  D --> E(Distribution and Impact)
+  style A fill:#616161
+  style B fill:#616161
+  style C fill:#612561
+```
+
+General good practice beyond technical tools:
+
+::: incremental
+- API design and semantics
+- Documentation and user guide
+- Involving community
+:::
+
+---
+
+
+
+
+## Benefits of integrating into community
+
+- Finding critical, thorough, and helpful reviewers quickly (submission: 08.09.25; publication: 20.12.25)
+- Joint grant applications and getting support (e.g., NumFocus, SSI grant schemes)
+- Your work is used and referenced
+- Finding contributors to your software
+- Expanding network
+
+
+
+---
+
+
+
+
+
+## Welcoming the community
+
+First questions people may ask when showing genuine interest in using and co-developing your library:
+
+> Does it have a guide for contributors?
+
+> Does it have proper tests and documentation?
+
+---
+
+
+
+
 ## Getting acknowledgement for your work
 
 - Journal of Open-Source Software (JOSS)
@@ -299,6 +528,9 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 
 ---
+
+
+
 
 ## References
 

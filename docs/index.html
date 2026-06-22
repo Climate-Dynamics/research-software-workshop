@@ -121,6 +121,10 @@
       margin-right: 0; 
     }
   </style>
+  <meta name="mermaid-theme" content="dark">
+  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -138,12 +142,36 @@ Sebastian G. Mutz
 </div>
 
 </section>
+<section id="roadmap" class="slide level2">
+<h2><span style="color:#a165a1"> Roadmap </span></h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Goals and Intro) --&gt; B(Introduction to Tools)
+  B --&gt; C(Good Practices)
+  C --&gt; D(Example Development)
+  D --&gt; E(Distribution and Impact)
+  style A fill:#612561
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Who and what is this (not) for?</li>
+<li class="fragment">A note on software literacy among researchers.</li>
+</ul>
+</section>
 <section id="disclaimer" class="slide level2">
 <h2>Disclaimer</h2>
 <ul>
 <li>I will assume some basic experience with coding.</li>
 <li>The aim is to only <em>raise awareness</em> of some key practices; tutorials are outside scope.</li>
-<li>Developer teams for large codebases (e.g., <a href="https://www.icon-model.org/">ICON</a>) have more to consider.</li>
+<li>Developer teams for large codebases (e.g., <a href="https://www.icon-model.org/">ICON</a>) have more to consider than what is presented here.</li>
 <li>For brevity, only few examples of tools and services are shown.</li>
 </ul>
 </section>
@@ -151,7 +179,7 @@ Sebastian G. Mutz
 <h2>Goals for today</h2>
 <ol type="1">
 <li class="fragment"><p>Help you increase research software <em>sustainability</em> and <em>impact</em> by adopting good development practices.</p></li>
-<li class="fragment"><p><em>Signpost</em> useful tools and services.</p></li>
+<li class="fragment"><p><em>Signpost</em> useful tools and services beyond IDEs and debuggers. (You can’t look for/into something if you’re unaware of its existence.)</p></li>
 <li class="fragment"><p><em>Demonstrate</em> some aspects of it with an example.</p></li>
 </ol>
 </section>
@@ -173,13 +201,41 @@ Sebastian G. Mutz
 <p><em>[Many students and ECRs]</em></p>
 </div><div class="column" style="width:55%;">
 <p>Good software …</p>
-<ul>
-<li class="fragment">addresses real need.</li>
-<li class="fragment">is well designed, tested, and documented.</li>
-<li class="fragment">is maintainable/ sustainable.</li>
+<ol type="1">
+<li class="fragment">addresses real (research) need.</li>
+<li class="fragment">is well designed, tested, and reliable.</li>
+<li class="fragment">is well documented and maintainable.</li>
+<li class="fragment">is developed with/for the community/users (adheres to standards, clean API)</li>
 <li class="fragment">has mechanisms for the above.</li>
-</ul>
+<li class="fragment">… is open.</li>
+</ol>
 </div></div>
+<!--- speaker notes below -->
+<aside class="notes">
+<ol start="2" type="1">
+<li>Has test suite.</li>
+<li>Auto-generated API documentation with additional “user guide” (use doc tools)</li>
+<li>Examples:</li>
+</ol>
+<ul>
+<li>no vendor specific compiler extensions</li>
+<li>API consistent and semantically meaningful</li>
+<li>use community standards for style (enforce with linter)</li>
+</ul>
+<ol start="5" type="1">
+<li>Doc tools (ford, sphinx), linter for style, contributor guide, mechanisms for feedback.</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="software-literacy-among-researchers-1" class="slide level2">
 <h2>Software literacy among researchers</h2>
@@ -192,6 +248,20 @@ Sebastian G. Mutz
 </div><div class="column" style="width:50%;">
 
 </div></div>
+<!--- speaker notes below -->
+<aside class="notes">
+<p>Many researchers are afraid of developing openly. One reason is low (OSS/software) literacy. Let’s dispel some myths.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="software-literacy-among-researchers-2" class="slide level2">
 <h2>Software literacy among researchers</h2>
@@ -208,6 +278,7 @@ Sebastian G. Mutz
 <figcaption>Licence breakdown on GitHub. Quote true for CC0. <em>[Balter, 2021]</em></figcaption>
 </figure>
 </div>
+<p>Researcher understand plagiarism and intellectual property for research (articles), but often fail to acknowledge this for software.</p>
 </div></div>
 </section>
 <section id="software-literacy-among-researchers-3" class="slide level2">
@@ -230,50 +301,40 @@ Sebastian G. Mutz
 </ul>
 </div></div>
 </section>
-<section id="environment-management" class="slide level2">
-<h2>Environment management</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="img/conda.png" class="quarto-figure quarto-figure-left" style="width:25.0%"></p>
-</figure>
+<section id="roadmap-1" class="slide level2">
+<h2><span style="color:#a165a1"> Roadmap </span></h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Goals and Intro) --&gt; B(Introduction to Tools)
+  B --&gt; C(Good Practices)
+  C --&gt; D(Example Development)
+  D --&gt; E(Distribution and Impact)
+  style A fill:#616161
+  style B fill:#612561
+</pre>
 </div>
-<p><code>conda</code></p>
-<ul>
-<li>open-source and mature</li>
-<li>installs pre-compiled binaries</li>
-<li>lots of libraries available through <em>conda-forge</em></li>
-</ul>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="img/spack.png" class="quarto-figure quarto-figure-left" style="width:25.0%"></p>
-</figure>
+<p></p></figure><p></p>
 </div>
-<p><code>spack</code></p>
+</div>
+</div>
+<p>Good practice supported by common tools:</p>
 <ul>
-<li>open-source and mature</li>
-<li>compiles on your computer</li>
-<li>can build, install, and manage <em>multiple versions</em> of libraries without breaking other installations</li>
-<li>more flexible, finer control (popular for development for HPC)</li>
+<li class="fragment">Git, code hosting</li>
+<li class="fragment">Managing environments</li>
+<li class="fragment">Language servers</li>
+<li class="fragment">Linters</li>
+<li class="fragment">Documentation tools</li>
+<li class="fragment">Distribution and automatic deployment</li>
 </ul>
-</div></div>
-</section>
-<section id="welcoming-the-community" class="slide level2">
-<h2>Welcoming the community</h2>
-<p>First questions people may ask when showing genuine interest in using and co-developing your library:</p>
-<blockquote>
-<p>Does it have a guide for contributors?</p>
-</blockquote>
-<blockquote>
-<p>Does it have proper tests and documentation?</p>
-</blockquote>
 </section>
 <section id="git-its-not-black-magic" class="slide level2">
 <h2>Git – it’s not black magic</h2>
+<p><code>git</code> is a <em>distributed version control</em> system; an automated way to organise and track different versions of a software, where the complete codebase mirrored on the developer’s computers.</p>
+<p>Basic use examples:</p>
 <ul>
 <li><p><code>git add [file or directory]</code> adds new or changed content to index</p></li>
 <li><p><code>git commit -m "description of changes"</code> records changes to the code repository with a message</p></li>
@@ -316,18 +377,53 @@ Sebastian G. Mutz
 </ul>
 </div></div>
 </section>
+<section id="environment-management" class="slide level2">
+<h2>Environment management</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/conda.png" class="quarto-figure quarto-figure-left" style="width:25.0%"></p>
+</figure>
+</div>
+<p><code>conda</code></p>
+<ul>
+<li>open-source and mature</li>
+<li>installs pre-compiled binaries</li>
+<li>lots of libraries available through <em>conda-forge</em></li>
+</ul>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/spack.png" class="quarto-figure quarto-figure-left" style="width:25.0%"></p>
+</figure>
+</div>
+<p><code>spack</code></p>
+<ul>
+<li>open-source and mature</li>
+<li>compiles on your computer</li>
+<li>can build, install, and manage <em>multiple versions</em> of libraries without breaking other installations</li>
+<li>more flexible, finer control (popular for development for HPC)</li>
+</ul>
+</div></div>
+</section>
 <section id="language-servers-helping-you-code" class="slide level2">
 <h2>Language Servers: helping you code</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
-<p><em>Language Servers</em> are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.</p>
+<ul>
+<li><em>Language Servers</em> are background processes that provide code editing features like auto-complete, error checking, and more. Can be enabled for specific languages in your editors.</li>
+<li>Decoupled from IDE code; can use language servers for various languages in same IDE.</li>
+</ul>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:65%;">
 <div class="quarto-figure quarto-figure-left">
 <figure>
 <p><img data-src="img/fortls.png" style="width:100.0%"></p>
-<figcaption>Fortran Language Server <em>fortls</em> (<a href="https://fortls.fortran-lang.org/index.html">link</a>) displaying project-specific kind definitions and list of module procedures in the <a href="https://kate-editor.org">kate</a> editor.</figcaption>
+<figcaption>Among many helpful things, the Fortran Language Server <em>fortls</em> (<a href="https://fortls.fortran-lang.org/index.html">link</a>) displays project-specific kind definitions and lists of module procedures. In this case, it is used in the <a href="https://kate-editor.org">kate</a> editor.</figcaption>
 </figure>
 </div>
 </div></div>
@@ -356,6 +452,121 @@ Sebastian G. Mutz
 </figure>
 </div>
 </div></div>
+</section>
+<section id="automatic-documentation" class="slide level2">
+<h2>Automatic Documentation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><code>FORD</code></p>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/ford.png" style="width:100.0%"></p>
+<figcaption><a href="https://forddocs.readthedocs.io">FORD</a> (Fortran Documenter) is another tool for automated documentation for <code>Fortran</code>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div></div>
+</section>
+<section id="automatic-documentation-1" class="slide level2">
+<h2>Automatic Documentation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><code>FORD</code></p>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/ford.png" style="width:100.0%"></p>
+<figcaption><a href="https://forddocs.readthedocs.io">FORD</a> (Fortran Documenter) is another tool for automated documentation for <code>Fortran</code>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><code>Sphinx</code></p>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/sphinx.png" style="width:100.0%"></p>
+<figcaption><a href="https://www.sphinx-doc.org/en/master/">Sphinx</a> is a popular documentation tool. It is versatile and can be used for many languages.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="distribution" class="slide level2">
+<h2>Distribution</h2>
+<p>Making it easy for others to use your software …</p>
+<ul>
+<li><em>Rust</em>: Cargo</li>
+<li><em>Fortran</em>: FPM (Fortran Package Manager)</li>
+<li><em>R</em>: CRAN (Comprehensive R Archive Network)</li>
+<li><em>Python</em>: pip/PyPI (Python Package Index)</li>
+</ul>
+</section>
+<section id="automated-deployment" class="slide level2">
+<h2>Automated deployment</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Using tools that will <em>automatically release code changes</em> (going from development environment right to end users).</li>
+<li><em>Example</em>: This presentation takes advantage of <em>GitHub pages</em>; when the repository for this presentation is updated, the changes to this web presentation are automatically released.</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/ghpages.png" style="width:100.0%"></p>
+<figcaption>Pushed changes of the rendered site are automatically delpoyed.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="automated-deployment-1" class="slide level2">
+<h2>Automated deployment</h2>
+<p><em>Let’s try …</em></p>
+</section>
+<section id="roadmap-2" class="slide level2">
+<h2><span style="color:#a165a1"> Roadmap </span></h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Goals and Intro) --&gt; B(Introduction to Tools)
+  B --&gt; C(Good Practices)
+  C --&gt; D(Example Development)
+  D --&gt; E(Distribution and Impact)
+  style A fill:#616161
+  style B fill:#616161
+  style C fill:#612561
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>General good practice beyond technical tools:</p>
+<ul>
+<li class="fragment">API design and semantics</li>
+<li class="fragment">Documentation and user guide</li>
+<li class="fragment">Involving community</li>
+</ul>
+</section>
+<section id="benefits-of-integrating-into-community" class="slide level2">
+<h2>Benefits of integrating into community</h2>
+<ul>
+<li>Finding critical, thorough, and helpful reviewers quickly (submission: 08.09.25; publication: 20.12.25)</li>
+<li>Joint grant applications and getting support (e.g., NumFocus, SSI grant schemes)</li>
+<li>Your work is used and referenced</li>
+<li>Finding contributors to your software</li>
+<li>Expanding network</li>
+</ul>
+</section>
+<section id="welcoming-the-community" class="slide level2">
+<h2>Welcoming the community</h2>
+<p>First questions people may ask when showing genuine interest in using and co-developing your library:</p>
+<blockquote>
+<p>Does it have a guide for contributors?</p>
+</blockquote>
+<blockquote>
+<p>Does it have proper tests and documentation?</p>
+</blockquote>
 </section>
 <section id="getting-acknowledgement-for-your-work" class="slide level2">
 <h2>Getting acknowledgement for your work</h2>
