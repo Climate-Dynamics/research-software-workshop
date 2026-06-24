@@ -153,7 +153,6 @@ Sebastian G. Mutz
   A(Goals and Intro) --&gt; B(Introduction to Tools)
   B --&gt; C(Good Practices)
   C --&gt; D(Example Development)
-  D --&gt; E(Distribution and Impact)
   style A fill:#612561
 </pre>
 </div>
@@ -312,7 +311,6 @@ Sebastian G. Mutz
   A(Goals and Intro) --&gt; B(Introduction to Tools)
   B --&gt; C(Good Practices)
   C --&gt; D(Example Development)
-  D --&gt; E(Distribution and Impact)
   style A fill:#616161
   style B fill:#612561
 </pre>
@@ -453,6 +451,32 @@ Sebastian G. Mutz
 </div>
 </div></div>
 </section>
+<section id="distribution" class="slide level2">
+<h2>Distribution</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Making it easy for others to use your software.</p>
+<ul>
+<li><em>Rust</em>: Cargo</li>
+<li><em>Fortran</em>: FPM (Fortran Package Manager)</li>
+<li><em>R</em>: CRAN (Comprehensive R Archive Network)</li>
+<li><em>Python</em>: pip/PyPI (Python Package Index)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fpm_toml.png" style="width:100.0%"></p>
+<figcaption>Including the git repository of an <em>fpm</em> package as a dependency in your <em>fpm.toml</em> file will automatically download and compile the dependency as your build/run your project.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fmap.gif" style="width:100.0%"></p>
+<figcaption>The <em>fmap</em> fantasy map generator uses the statistics procedures of <em>fsml</em>. No manual download, compilation, or linking is required.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
 <section id="automatic-documentation" class="slide level2">
 <h2>Automatic Documentation</h2>
 <div class="columns">
@@ -489,16 +513,6 @@ Sebastian G. Mutz
 </div>
 </div></div>
 </section>
-<section id="distribution" class="slide level2">
-<h2>Distribution</h2>
-<p>Making it easy for others to use your software …</p>
-<ul>
-<li><em>Rust</em>: Cargo</li>
-<li><em>Fortran</em>: FPM (Fortran Package Manager)</li>
-<li><em>R</em>: CRAN (Comprehensive R Archive Network)</li>
-<li><em>Python</em>: pip/PyPI (Python Package Index)</li>
-</ul>
-</section>
 <section id="automated-deployment" class="slide level2">
 <h2>Automated deployment</h2>
 <div class="columns">
@@ -531,7 +545,6 @@ Sebastian G. Mutz
   A(Goals and Intro) --&gt; B(Introduction to Tools)
   B --&gt; C(Good Practices)
   C --&gt; D(Example Development)
-  D --&gt; E(Distribution and Impact)
   style A fill:#616161
   style B fill:#616161
   style C fill:#612561
@@ -546,41 +559,362 @@ Sebastian G. Mutz
 <li class="fragment">API design and semantics</li>
 <li class="fragment">Documentation and user guide</li>
 <li class="fragment">Involving community</li>
+<li class="fragment">Increasing software visibility (in academia)</li>
 </ul>
 </section>
-<section id="benefits-of-integrating-into-community" class="slide level2">
-<h2>Benefits of integrating into community</h2>
+<section id="api-application-programming-interface-design" class="slide level2">
+<h2>API (Application Programming Interface) design</h2>
+<p>A good API is easy to read and understand (semantically meaningful), complete and concise, and difficult to misuse.</p>
+<h3 id="example">Example</h3>
+<p><code>rinc(rf)</code></p>
 <ul>
-<li>Finding critical, thorough, and helpful reviewers quickly (submission: 08.09.25; publication: 20.12.25)</li>
-<li>Joint grant applications and getting support (e.g., NumFocus, SSI grant schemes)</li>
-<li>Your work is used and referenced</li>
-<li>Finding contributors to your software</li>
-<li>Expanding network</li>
+<li class="fragment">hard to understand; unclear what procedure is or arguments are.</li>
 </ul>
-</section>
-<section id="welcoming-the-community" class="slide level2">
-<h2>Welcoming the community</h2>
-<p>First questions people may ask when showing genuine interest in using and co-developing your library:</p>
-<blockquote>
-<p>Does it have a guide for contributors?</p>
-</blockquote>
-<blockquote>
-<p>Does it have proper tests and documentation?</p>
-</blockquote>
-</section>
-<section id="getting-acknowledgement-for-your-work" class="slide level2">
-<h2>Getting acknowledgement for your work</h2>
+<p><code>s_river_incision(rainfall_rate)</code></p>
 <ul>
-<li>Journal of Open-Source Software (JOSS)</li>
-<li>Geoscientific Model Development</li>
+<li class="fragment">indicator of type of procedure (<code>s_</code> for subroutine)</li>
+<li class="fragment">clearly, river incision is happening</li>
+<li class="fragment">rainfall rate is passed as an argument - difficult to pass some other variable</li>
 </ul>
+</section>
+<section id="beyond-automatic-documentation" class="slide level2">
+<h2>Beyond automatic documentation</h2>
+<p>Documentation tools like <em>sphinx</em> or <em>FORD</em> let you enhance the automatically generated documentation with user guides and additional pages (generated from simple <code>markdown</code> or <code>rst</code> text files).</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<h3 id="good-api-documentation">Good API documentation</h3>
+<ul>
+<li class="fragment">explains underlying theory (e.g., stream power law)</li>
+<li class="fragment">uses equations (<code>latex</code> usually supported by doc tools)</li>
+<li class="fragment">specifies input and output exactly - dimensions, data types, and what it is (e.g., <code>rainfall_rate</code> - scalar of type <em>real64</em>; mean annual rainfall rate)</li>
+</ul>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<h3 id="user-guide">User Guide</h3>
+<ul>
+<li class="fragment">where/how to get the code?</li>
+<li class="fragment">what are the dependencies?</li>
+<li class="fragment">how to install the library and dependencies?</li>
+<li class="fragment">how to use it in your project?</li>
+<li class="fragment"><strong>lots and lots of examples!</strong></li>
+</ul>
+</div></div>
+</section>
+<section id="involve-community" class="slide level2">
+<h2>Involve Community</h2>
+<div class="columns">
+<div class="column" style="width:15%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/community.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:85%;">
+<ul>
+<li class="fragment">make your repository <em>visible</em></li>
+<li class="fragment">decide on a <em>licence</em> (so users and contributors know what they can do with/to the software)</li>
+<li class="fragment">create a <em>contributor guide</em> with style guidelines</li>
+<li class="fragment">create a mechanism/guide for collecting <em>feedback</em> (e.g., GitHub issue templates)</li>
+<li class="fragment">create a <em>code of conduct</em> for a healthy and friendly community</li>
+<li class="fragment"><em>engage</em> with the community</li>
+</ul>
+</div></div>
+</section>
+<section id="visibility-and-acknowledgement" class="slide level2">
+<h2>Visibility and acknowledgement</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/gmd.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
+</figure>
+</div>
+<p><a href="https://www.geoscientific-model-development.net/">Geoscientific Model Development (GMD)</a></p>
+<ul>
+<li>open-access and community-driven</li>
+<li>transparent, but conventional review process (<em>focuses more on article</em> than code)</li>
+<li><em>full length articles</em> and potential duplication of work (if you already have good documentation)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/joss.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
+</figure>
+</div>
+<p><a href="https://joss.theoj.org/">Journal of Open Source Software (JOSS)</a></p>
+<ul>
+<li>open-access and community-driven</li>
+<li>transparent, fast, and <em>developer friendly</em> review (<em>focuses also on code and documentation</em>)</li>
+<li><em>short articles</em>; signposts the documentation and work you have already done</li>
+</ul>
+</div></div>
+</section>
+<section id="roadmap-3" class="slide level2">
+<h2><span style="color:#a165a1"> Roadmap </span></h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A(Goals and Intro) --&gt; B(Introduction to Tools)
+  B --&gt; C(Good Practices)
+  C --&gt; D(Example Development)
+  style A fill:#616161
+  style B fill:#616161
+  style C fill:#616161
+  style D fill:#612561
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/FSML_v0.1.0.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><em>Development journey</em>: How to turn your research code into a well-organised library?</p>
+</div></div>
+</section>
+<section id="fstat-old-research-toolbox" class="slide level2">
+<h2>FSTAT: Old research toolbox</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fstat.png" style="width:100.0%"></p>
+<figcaption>A lot of procedures from <em>fstat</em> made their way into <em>FSML</em>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<ul>
+<li><em>15+ years of code</em> development lived on my computer(s)</li>
+<li><em>LAPACK</em> compiled and linked manually</li>
+<li>manual building and linking of <em>fstat</em> required</li>
+<li>no documentation; just code <em>comments and a README</em></li>
+<li>useful only for me</li>
+</ul>
+</div></div>
+</section>
+<section id="a-new-fortran-ecosystem-and-community" class="slide level2">
+<h2>A new Fortran ecosystem and community</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fortran-lang.png" style="width:100.0%"></p>
+<figcaption><a href="https://github.com/fortran-lang/stdlib">stdlib</a> and <a href="https://github.com/fortran-lang/fpm">fpm</a> are among <a href="https://fortran-lang.org/">fortran-lang</a>’s flagship projects.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/discourse.png" style="width:100.0%"></p>
+<figcaption>The <a href="https://fortran-lang.discourse.group/">fortran-lang discourse</a> is a friendly and supportive online community of Fortran programmers; includes newcomers and Fortran standard committee members.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<p><code>fpm</code></p>
+<p>Fortran Package Manager makes building, running, and distributing Fortran projects hassle-free.</p>
+<p><code>stdlib</code></p>
+<p>The new standard library includes many useful procedures and includes modern lapack interfaces.</p>
+<p><em>“Perhaps it’s worth modernising and opening up my toolbox?”</em></p>
+</div></div>
+</section>
+<section id="new-structure-and-dependencies" class="slide level2">
+<h2>New structure and dependencies</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_modules.png" style="width:100.0%"></p>
+<figcaption><a href="https://fsml.mutz.science/">FSML</a> is organised into 5 thematic modules: Basic statistics (<em>STS</em>), hypothesis tests (<em>TST</em>), linear procedures (<em>LIN</em>), non-linear procedures (<em>NLP</em>), and statistical distribution functions (<em>DST</em>).</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:70%;">
+<ul>
+<li class="fragment">procedures updated, restructured, and categorised into 5 core modules</li>
+<li class="fragment">migrated to <em>fpm</em> for building/distribution and <em>stdlib</em> for linear algebra</li>
+<li class="fragment"><em>examples</em> and <em>tests</em> for all procedures</li>
+<li class="fragment">developed to support <a href="https://gcc.gnu.org/wiki/GFortran">GFortran</a> and interactive <a href="https://lfortran.org/">LFortran</a> compiler</li>
+</ul>
+</div></div>
+</section>
+<section id="new-api-and-consistent-style" class="slide level2">
+<h2>New API and consistent style</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_api.png" style="width:100.0%"></p>
+<figcaption><em>FSML</em>’s API is similar to that of popular statistics and machine learning packages in <em>R</em> and <em>Python</em>.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">internal procedure names: <em>procedureType_module_procedure_suffix</em> (e.g., <code>s_dst_gpd_pdf_core</code> for pure procedure and <code>s_dst_gpd_pdf</code> for impure wrapper)</li>
+<li class="fragment">API (through interface module): <em>fsml_procedure</em> (e.g., <code>fsml_gpd_pdf</code>); explicit and avoids name conflicts</li>
+</ul>
+</div></div>
+</section>
+<section id="documentation-api-and-handbook" class="slide level2">
+<h2>Documentation (API and Handbook)</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_quickstart.png" style="width:100.0%"></p>
+<figcaption><em>FSML</em>’s short “Quick Start” is step-by-step guide for using the library in your project.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><em>API documentation</em> (previous slide)</li>
+<li class="fragment"><em>Quick Start</em> tutorial</li>
+<li class="fragment">Visible <em>license</em>, and <em>citation</em> instructions for users and contributors</li>
+</ul>
+</div></div>
+</section>
+<section id="documentation-api-and-handbook-1" class="slide level2">
+<h2>Documentation (API and Handbook)</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_styleguide.png" style="width:100.0%"></p>
+<figcaption><em>FSML</em>’s style guide helps code contributors get started.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><em>Contributing</em> guidelines (style guide, conventions, instructions for raising issues, etc.)</li>
+<li class="fragment"><em>Code of Conduct</em> (adapted from the <a href="https://www.contributor-covenant.org/">Contributor Covenant</a>, version 2.0); community impact guidelines inspired by Mozilla’s <a href="https://github.com/mozilla/inclusion">code of conduct</a>.</li>
+</ul>
+</div></div>
+</section>
+<section id="software-visibility" class="slide level2">
+<h2>Software Visibility</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_joss.png" style="width:100.0%"></p>
+<figcaption>Paper in <em>Journal of Open Source Software</em>.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_discourse.png" style="width:100.0%"></p>
+<figcaption>Announcement on <em>Fortran Discourse</em>.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_blog.png" style="width:100.0%"></p>
+<figcaption>Dev <em>blog</em> post.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_fwiki.png" style="width:100.0%"></p>
+<figcaption>Entry on <a href="https://fortranwiki.org/">Fortran Wiki</a> (encouraged by community).</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_nadigest.png" style="width:100.0%"></p>
+<figcaption>Announcement in <em>NA Digest</em> (encouraged by community).</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/fsml_egu.png" style="width:100.0%"></p>
+<figcaption><a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-5393.html">Contribution</a> at EGU GA 26.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="engagement-use-and-prospects" class="slide level2">
+<h2>Engagement, use, and prospects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>early adoption for research (<em>drought prediction</em>)</li>
+<li><em>lowered barrier</em> for students interested in Fortran</li>
+<li><em>new contributor</em> days after release announcement</li>
+<li>researches at NCI (National Computational Infrastructure) Australia consider adoption and contribution</li>
+<li><em>proposals</em> resulted from community engagement</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/loiseau.png" style="width:100.0%"></p>
+<figcaption><a href="https://loiseaujc.github.io/">Jean-Christophe Loiseau</a> (expert in applied mathematics and fluid dynamics) adding <em>LASSO</em> to FSML.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="the-future" class="slide level2">
+<h2>The future …</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><em>rework and add more</em> procedures from <em>fstat</em> (e.g., Random Forests)</li>
+<li>add <em>ML utilities</em> to lower barrier for ML model development</li>
+<li>optimise further for <em>parallel execution</em></li>
+<li>optimise for performance without sacrificing readability (some tested functions already &gt;20x faster than scipy’s)</li>
+<li>make the library usable in <em>jupyter notebooks</em> to lower barrier further …</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/lfortran_jupyter.png" style="width:100.0%"></p>
+<figcaption>The interactive <em>LFortran</em> compiler already enables the use of <em>jupyter notebooks</em> with Fortran.</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
 <ul>
 <li>Balter, Ben (2015; updated 2021) “Open source license usage on GitHub.com”, GitHub Blog. <a href="https://github.blog/open-source/open-source-license-usage-on-github-com/">Link</a></li>
 <li>Hoffmann, Manuel, Frank Nagle, and Yanuo Zhou (2024) “The Value of Open Source Software.” Harvard Business School Working Paper, No.&nbsp;24-038.</li>
+<li>Mutz, S. G., (2025). “FSML – A Modern Fortran Statistics and Machine Learning Library”. Journal of Open Source Software, 10(116), 9058, <a href="https://doi.org/10.21105/joss.09058">https://doi.org/10.21105/joss.09058</a></li>
 </ul>
+</section>
+<section id="fin" class="slide level2">
+<h2>Fin</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="img/herbert.jpg" style="width:100.0%"></p>
+<figcaption>Herbert Peck.</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<blockquote>
+<p>“Yes, I’m aware of the legend Herbert.”</p>
+</blockquote>
+<p>(Syed Danish Ali, July 2025)</p>
+</div></div>
+</section>
+<section class="slide level2">
+
 
 </section>
     </div>

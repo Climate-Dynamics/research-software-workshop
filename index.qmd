@@ -25,7 +25,6 @@ flowchart LR
   A(Goals and Intro) --> B(Introduction to Tools)
   B --> C(Good Practices)
   C --> D(Example Development)
-  D --> E(Distribution and Impact)
   style A fill:#612561
 ```
 
@@ -207,7 +206,6 @@ flowchart LR
   A(Goals and Intro) --> B(Introduction to Tools)
   B --> C(Good Practices)
   C --> D(Example Development)
-  D --> E(Distribution and Impact)
   style A fill:#616161
   style B fill:#612561
 ```
@@ -376,6 +374,32 @@ Basic use examples:
 
 
 
+## Distribution
+
+::: {.columns}
+::: {.column width="50%"}
+
+Making it easy for others to use your software.
+
+- *Rust*: Cargo
+- *Fortran*: FPM (Fortran Package Manager)
+- *R*: CRAN (Comprehensive R Archive Network)
+- *Python*: pip/PyPI (Python Package Index)
+
+:::
+::: {.column width="50%"}
+
+![Including the git repository of an *fpm* package as a dependency in your *fpm.toml* file will automatically download and compile the dependency as your build/run your project.](img/fpm_toml.png){fig-align="left" width=100%}
+
+![The *fmap* fantasy map generator uses the statistics procedures of *fsml*. No manual download, compilation, or linking is required.](img/fmap.gif){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
 ## Automatic Documentation
 
 ::: {.columns}
@@ -421,20 +445,6 @@ Basic use examples:
 
 
 
-## Distribution
-
-Making it easy for others to use your software ...
-
-- *Rust*: Cargo
-- *Fortran*: FPM (Fortran Package Manager)
-- *R*: CRAN (Comprehensive R Archive Network)
-- *Python*: pip/PyPI (Python Package Index)
-
----
-
-
-
-
 ## Automated deployment
 
 ::: {.columns}
@@ -465,6 +475,7 @@ Making it easy for others to use your software ...
 
 
 
+
 ## <span style="color:#a165a1"> Roadmap </span>
 
 ```{mermaid}
@@ -472,7 +483,6 @@ flowchart LR
   A(Goals and Intro) --> B(Introduction to Tools)
   B --> C(Good Practices)
   C --> D(Example Development)
-  D --> E(Distribution and Impact)
   style A fill:#616161
   style B fill:#616161
   style C fill:#612561
@@ -484,6 +494,7 @@ General good practice beyond technical tools:
 - API design and semantics
 - Documentation and user guide
 - Involving community
+- Increasing software visibility (in academia)
 :::
 
 ---
@@ -491,41 +502,392 @@ General good practice beyond technical tools:
 
 
 
-## Benefits of integrating into community
+## API (Application Programming Interface) design
 
-- Finding critical, thorough, and helpful reviewers quickly (submission: 08.09.25; publication: 20.12.25)
-- Joint grant applications and getting support (e.g., NumFocus, SSI grant schemes)
-- Your work is used and referenced
-- Finding contributors to your software
-- Expanding network
+A good API is easy to read and understand (semantically meaningful), complete and concise, and difficult to misuse.
 
+### Example
 
+::: incremental
+`rinc(rf)`
 
----
+- hard to understand; unclear what procedure is or arguments are.
 
+`s_river_incision(rainfall_rate)`
 
+- indicator of type of procedure (`s_` for subroutine)
+- clearly, river incision is happening
+- rainfall rate is passed as an argument - difficult to pass some other variable
 
-
-
-## Welcoming the community
-
-First questions people may ask when showing genuine interest in using and co-developing your library:
-
-> Does it have a guide for contributors?
-
-> Does it have proper tests and documentation?
+:::
 
 ---
 
 
 
 
-## Getting acknowledgement for your work
+## Beyond automatic documentation
 
-- Journal of Open-Source Software (JOSS)
-- Geoscientific Model Development
+Documentation tools like *sphinx* or *FORD* let you enhance the automatically generated documentation with user guides and additional pages (generated from simple `markdown` or `rst` text files).
+
+::: {.columns}
+::: {.column width="45%"}
+
+### Good API documentation
+
+::: incremental
+- explains underlying theory (e.g., stream power law)
+- uses equations (`latex` usually supported by doc tools)
+- specifies input and output exactly - dimensions, data types, and what it is (e.g., `rainfall_rate` - scalar of type *real64*; mean annual rainfall rate)
+:::
+
+:::
+::: {.column width="10%"}
+
+:::
+::: {.column width="45%"}
+
+### User Guide
+
+::: incremental
+- where/how to get the code?
+- what are the dependencies?
+- how to install the library and dependencies?
+- how to use it in your project?
+- **lots and lots of examples!**
+:::
+
+:::
+:::
+
+---
 
 
+
+
+## Involve Community
+
+
+::: {.columns}
+::: {.column width="15%"}
+
+![](img/community.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="85%"}
+
+::: incremental
+- make your repository *visible*
+- decide on a *licence* (so users and contributors know what they can do with/to the software)
+- create a *contributor guide* with style guidelines
+- create a mechanism/guide for collecting *feedback* (e.g., GitHub issue templates)
+- create a *code of conduct* for a healthy and friendly community
+- *engage* with the community
+:::
+
+:::
+:::
+
+---
+
+
+
+## Visibility and acknowledgement
+
+::: {.columns}
+::: {.column width="50%"}
+
+![](img/gmd.png){fig-align="left" width=100%}
+
+[Geoscientific Model Development (GMD)](https://www.geoscientific-model-development.net/)
+
+- open-access and community-driven
+- transparent, but conventional review process (*focuses more on article* than code)
+- *full length articles* and potential duplication of work (if you already have good documentation)
+
+:::
+::: {.column width="50%"}
+
+![](img/joss.png){fig-align="left" width=100%}
+
+[Journal of Open Source Software (JOSS)](https://joss.theoj.org/)
+
+- open-access and community-driven
+- transparent, fast, and *developer friendly* review (*focuses also on code and documentation*)
+- *short articles*; signposts the documentation and work you have already done
+
+:::
+:::
+
+---
+
+
+
+
+## <span style="color:#a165a1"> Roadmap </span>
+
+```{mermaid}
+flowchart LR
+  A(Goals and Intro) --> B(Introduction to Tools)
+  B --> C(Good Practices)
+  C --> D(Example Development)
+  style A fill:#616161
+  style B fill:#616161
+  style C fill:#616161
+  style D fill:#612561
+```
+
+
+::: {.columns}
+::: {.column width="50%"}
+
+![](img/FSML_v0.1.0.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="50%"}
+
+*Development journey*: How to turn your research code into a well-organised library?
+
+:::
+:::
+
+---
+
+
+
+
+## FSTAT: Old research toolbox
+
+::: {.columns}
+::: {.column width="20%"}
+
+![A lot of procedures from *fstat* made their way into *FSML*.](img/fstat.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="80%"}
+
+- *15+ years of code* development lived on my computer(s)
+- *LAPACK* compiled and linked manually
+- manual building and linking of *fstat* required
+- no documentation; just code *comments and a README*
+- useful only for me
+
+:::
+:::
+
+---
+
+
+
+
+## A new Fortran ecosystem and community
+
+::: {.columns}
+::: {.column width="40%"}
+
+![[stdlib](https://github.com/fortran-lang/stdlib) and [fpm](https://github.com/fortran-lang/fpm) are among [fortran-lang](https://fortran-lang.org/)'s flagship projects.](img/fortran-lang.png){fig-align="left" width=100%}
+
+![The [fortran-lang discourse](https://fortran-lang.discourse.group/) is a friendly and supportive online community of Fortran programmers; includes newcomers and Fortran standard committee members.](img/discourse.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="60%"}
+
+`fpm`
+
+Fortran Package Manager makes building, running, and distributing Fortran projects hassle-free.
+
+`stdlib`
+
+The new standard library includes many useful procedures and includes modern lapack interfaces.
+
+*"Perhaps it's worth modernising and opening up my toolbox?"*
+
+:::
+:::
+
+---
+
+
+
+
+## New structure and dependencies
+
+::: {.columns}
+::: {.column width="25%"}
+
+![[FSML](https://fsml.mutz.science/) is organised into 5 thematic modules: Basic statistics (*STS*), hypothesis tests (*TST*), linear
+procedures (*LIN*), non-linear procedures (*NLP*), and statistical distribution functions (*DST*).](img/fsml_modules.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="5%"}
+
+:::
+::: {.column width="70%"}
+
+::: incremental
+- procedures updated, restructured, and categorised into 5 core modules
+- migrated to *fpm* for building/distribution and *stdlib* for linear algebra
+- *examples* and *tests* for all procedures
+- developed to support [GFortran](https://gcc.gnu.org/wiki/GFortran) and interactive [LFortran](https://lfortran.org/) compiler
+:::
+
+:::
+:::
+
+---
+
+
+
+
+## New API and consistent style
+
+::: {.columns}
+::: {.column width="45%"}
+
+![*FSML*'s API is similar to that of popular statistics and machine learning packages in *R* and *Python*.](img/fsml_api.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="5%"}
+
+:::
+::: {.column width="50%"}
+
+::: incremental
+- internal procedure names: *procedureType_module_procedure_suffix* (e.g., `s_dst_gpd_pdf_core` for pure procedure and `s_dst_gpd_pdf` for impure wrapper)
+- API (through interface module): *fsml_procedure* (e.g., `fsml_gpd_pdf`); explicit and avoids name conflicts
+:::
+
+:::
+:::
+
+---
+
+
+
+
+## Documentation (API and Handbook)
+
+::: {.columns}
+::: {.column width="45%"}
+
+![*FSML*'s short "Quick Start" is step-by-step guide for using the library in your project.](img/fsml_quickstart.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="5%"}
+
+:::
+::: {.column width="50%"}
+
+::: incremental
+- *API documentation* (previous slide)
+- *Quick Start* tutorial
+- Visible *license*, and *citation* instructions for users and contributors
+:::
+
+:::
+:::
+
+---
+
+
+
+
+## Documentation (API and Handbook)
+
+::: {.columns}
+::: {.column width="45%"}
+
+![*FSML*'s style guide helps code contributors get started.](img/fsml_styleguide.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="5%"}
+
+:::
+::: {.column width="50%"}
+
+::: incremental
+- *Contributing* guidelines (style guide, conventions, instructions for raising issues, etc.)
+- *Code of Conduct* (adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0); community impact guidelines inspired by Mozilla's [code of conduct](https://github.com/mozilla/inclusion).
+:::
+
+:::
+:::
+
+---
+
+
+
+
+## Software Visibility
+
+::: {.columns}
+::: {.column width="50%"}
+
+![Paper in *Journal of Open Source Software*.](img/fsml_joss.png){fig-align="left" width=100%}
+
+![Announcement on *Fortran Discourse*.](img/fsml_discourse.png){fig-align="left" width=100%}
+
+![Dev *blog* post.](img/fsml_blog.png){fig-align="left" width=100%}
+
+:::
+::: {.column width="50%"}
+
+![Entry on [Fortran Wiki](https://fortranwiki.org/) (encouraged by community).](img/fsml_fwiki.png){fig-align="left" width=100%}
+
+![Announcement in *NA Digest* (encouraged by community).](img/fsml_nadigest.png){fig-align="left" width=100%}
+
+![[Contribution](https://meetingorganizer.copernicus.org/EGU26/EGU26-5393.html) at EGU GA 26.](img/fsml_egu.png){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
+
+## Engagement, use, and prospects
+
+::: {.columns}
+::: {.column width="50%"}
+
+- early adoption for research (*drought prediction*)
+- *lowered barrier* for students interested in Fortran
+- *new contributor* days after release announcement
+- researches at NCI (National Computational Infrastructure) Australia consider adoption and contribution
+- *proposals* resulted from community engagement
+
+:::
+::: {.column width="50%"}
+
+![[Jean-Christophe Loiseau](https://loiseaujc.github.io/) (expert in applied mathematics and fluid dynamics) adding *LASSO* to FSML.](img/loiseau.png){fig-align="left" width=100%}
+
+:::
+:::
+
+---
+
+
+
+
+## The future ...
+
+::: {.columns}
+::: {.column width="50%"}
+
+- *rework and add more* procedures from *fstat* (e.g., Random Forests)
+- add *ML utilities* to lower barrier for ML model development
+- optimise further for *parallel execution*
+- optimise for performance without sacrificing readability (some tested functions already >20x faster than scipy's)
+- make the library usable in *jupyter notebooks* to lower barrier further ...
+
+:::
+::: {.column width="50%"}
+
+![The interactive *LFortran* compiler already enables the use of *jupyter notebooks* with Fortran.](img/lfortran_jupyter.png){fig-align="left" width=100%}
+
+:::
+:::
 
 ---
 
@@ -533,7 +895,36 @@ First questions people may ask when showing genuine interest in using and co-dev
 
 
 ## References
-
 - Balter, Ben (2015; updated 2021) "Open source license usage on GitHub.com", GitHub Blog. [Link](https://github.blog/open-source/open-source-license-usage-on-github-com/)
 - Hoffmann, Manuel, Frank Nagle, and Yanuo Zhou (2024) "The Value of Open Source Software." Harvard Business School Working Paper, No. 24-038.
+- Mutz, S. G., (2025). "FSML – A Modern Fortran Statistics and Machine Learning Library". Journal of Open Source Software, 10(116), 9058, [https://doi.org/10.21105/joss.09058](https://doi.org/10.21105/joss.09058)
+
+
+
+
+## Fin
+
+::: {.columns}
+::: {.column width="50%"}
+
+![Herbert Peck.](img/herbert.jpg){fig-align="left" width=100%}
+
+:::
+::: {.column width="50%"}
+
+> “Yes, I’m aware of the legend Herbert.”
+
+(Syed Danish Ali, July 2025)
+
+:::
+:::
+
+---
+
+
+
+
+
+
+
 
