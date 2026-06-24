@@ -877,8 +877,8 @@ procedures (*LIN*), non-linear procedures (*NLP*), and statistical distribution 
 
 - *rework and add more* procedures from *fstat* (e.g., Random Forests)
 - add *ML utilities* to lower barrier for ML model development
+- develop further *as needed by research*
 - optimise further for *parallel execution*
-- optimise for performance without sacrificing readability (some tested functions already >20x faster than scipy's)
 - make the library usable in *jupyter notebooks* to lower barrier further ...
 
 :::
