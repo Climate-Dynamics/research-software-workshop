@@ -504,7 +504,7 @@ General good practice beyond technical tools:
 
 ## API (Application Programming Interface) design
 
-A good API is easy to read and understand (semantically meaningful), complete and concise, and difficult to misuse.
+A good API is easy to read and understand (semantically meaningful), complete and concise, and difficult to misuse. The same is generally true for procedure naming.
 
 ### Example
 
@@ -853,9 +853,10 @@ procedures (*LIN*), non-linear procedures (*NLP*), and statistical distribution 
 
 - early adoption for research (*drought prediction*)
 - *lowered barrier* for students interested in Fortran
-- *new contributor* days after release announcement
-- researches at NCI (National Computational Infrastructure) Australia consider adoption and contribution
+- *new contributor* days after release
+- researchers at NCI (National Computational Infrastructure) Australia consider adoption and contribution
 - *proposals* resulted from community engagement
+- another reference for new statistics procedures in *stdlib*
 
 :::
 ::: {.column width="50%"}
