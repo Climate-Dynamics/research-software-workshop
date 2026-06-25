@@ -469,7 +469,7 @@ Making it easy for others to use your software.
 
 ## Automated deployment
 
-*Let's try ...*
+*Let's try.*
 
 ---
 
